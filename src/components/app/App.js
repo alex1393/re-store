@@ -3,7 +3,7 @@ import "./app.css";
 import WithBookstoreService from "../hoc/With-bookstore-service";
 
 const App = ({ bookstoreService }) => {
-  console.log(bookstoreService.getBooks());
+  console.log(bookstoreService.getBook());
   return <h1>Hello world</h1>;
 };
 
