@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./book-list";
+import "./book-list.css";
 
 import { connect } from "react-redux";
 import compose from "../../utils/compose";
@@ -17,7 +17,7 @@ class BookList extends Component {
   render() {
     const { books } = this.props;
     return (
-      <ul>
+      <ul className="book-list">
         {books.map((book) => {
           return (
             <li key={book.id}>
