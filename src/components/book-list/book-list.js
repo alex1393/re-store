@@ -16,7 +16,6 @@ class BookList extends Component {
 
   render() {
     const { books, loading, error } = this.props;
-    console.log(this.props.books);
     if (loading) {
       return <Spinner />;
     }
