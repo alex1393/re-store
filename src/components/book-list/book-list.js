@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import compose from "../../utils/compose";
 import WithBookstoreService from "../hoc/With-bookstore-service";
 import BookListItem from "../book-list-item/book-list-item";
-import { fetchBooks } from "../../actions";
+import { fetchBooks, bookAddedToCard } from "../../actions";
 import Spinner from "../spinner/Spinner";
 import ErrorIndicator from "../error-indicator/Error-indicator";
 
@@ -52,9 +52,7 @@ const mapStateToProps = ({ books, loading, error }) => {
 const mapDispatchToProps = (dispatch, { bookstoreService }) => {
   return {
     fetchBooks: fetchBooks(bookstoreService, dispatch),
-    onAddedToCart: (id) => {
-      console.log(`Added ${id}`);
-    },
+    onAddedToCart: (id) => dispatch(bookAddedToCard(id)),
   };
 };
 
