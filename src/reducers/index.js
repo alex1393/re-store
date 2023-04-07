@@ -6,6 +6,13 @@ const initialState = {
   orderTotal: 240,
 };
 
+const updateCartItems = (cartItems, item, idx) => {
+  if (idx === -1) {
+    return [...cartItems, item];
+  }
+  return [cartItems.slice(0, idx), item, cartItems.slice(0, idx + 1)];
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "FETCH_BOOKS_REQUEST":
@@ -51,18 +58,10 @@ const reducer = (state = initialState, action) => {
         };
       }
 
-      if (itemIndex < 0) {
-        return {
-          ...state,
-          cartItems: [...state.cartItems, newItem],
-        };
-      } else {
-        return {
-          ...state,
-          cartItems: [...state.cartItems.slice(0, itemIndex), newItem],
-          ...state.cartItems.slice(itemIndex, itemIndex + 1),
-        };
-      }
+      return {
+        ...state,
+        cartItems: updateCartItems(state.cartItems, newItem, itemIndex),
+      };
 
     default:
       return state;
