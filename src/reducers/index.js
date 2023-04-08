@@ -7,10 +7,14 @@ const initialState = {
 };
 
 const updateCartItems = (cartItems, item, idx) => {
-  if (idx === -1) {
+  console.log(idx);
+  if (idx < 0) {
+    console.log(1);
     return [...cartItems, item];
+  } else {
+    console.log(2);
+    return [...cartItems.slice(0, idx), item, ...cartItems.slice(0, idx + 1)];
   }
-  return [cartItems.slice(0, idx), item, cartItems.slice(0, idx + 1)];
 };
 
 const reducer = (state = initialState, action) => {
@@ -44,6 +48,7 @@ const reducer = (state = initialState, action) => {
 
       let newItem;
       if (item) {
+        console.log(1);
         newItem = {
           ...item,
           count: item.count + 1,
@@ -51,7 +56,7 @@ const reducer = (state = initialState, action) => {
         };
       } else {
         newItem = {
-          id: bookId,
+          id: book.id,
           title: book.title,
           count: 1,
           total: book.price,
