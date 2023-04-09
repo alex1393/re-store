@@ -7,13 +7,10 @@ const initialState = {
 };
 
 const updateCartItems = (cartItems, item, idx) => {
-  console.log(idx);
   if (idx < 0) {
-    console.log(1);
     return [...cartItems, item];
   } else {
-    console.log(2);
-    return [...cartItems.slice(0, idx), item, ...cartItems.slice(0, idx + 1)];
+    return [...cartItems.slice(0, idx), item, ...cartItems.slice(idx + 1)];
   }
 };
 
@@ -48,11 +45,12 @@ const reducer = (state = initialState, action) => {
 
       let newItem;
       if (item) {
-        console.log(1);
+        console.log(item.total);
+        console.log(book.price);
         newItem = {
           ...item,
           count: item.count + 1,
-          total: item.total + book.price,
+          total: (+item.total + book.price).toFixed(2),
         };
       } else {
         newItem = {
