@@ -16,6 +16,14 @@ export default class BookstoreService {
       coverImage:
         "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T2/images/I/51-nXsSRfZL._SX328_BO1,204,203,200_.jpg",
     },
+    {
+      id: 3,
+      title: "Hidden Oracle",
+      author: "Rick Riordan",
+      price: 10.5,
+      coverImage:
+        "https://d374oxlv7wyffd.cloudfront.net/B0169FUXJ2/f9b817d8/cover.jpeg",
+    },
   ];
 
   getBooks() {
