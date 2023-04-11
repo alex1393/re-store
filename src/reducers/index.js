@@ -14,6 +14,17 @@ const updateCartItems = (cartItems, item, idx) => {
   }
 };
 
+const updateCartItem = (book, item = {}) => {
+  const { id = book.id, count = 0, title = book.title, total = 0 } = item;
+
+  return {
+    id,
+    title,
+    count: count + 1,
+    total: (+total + book.price).toFixed(2),
+  };
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "FETCH_BOOKS_REQUEST":
@@ -43,23 +54,7 @@ const reducer = (state = initialState, action) => {
       const itemIndex = state.cartItems.findIndex(({ id }) => id === bookId);
       const item = state.cartItems[itemIndex];
 
-      let newItem;
-      if (item) {
-        console.log(item.total);
-        console.log(book.price);
-        newItem = {
-          ...item,
-          count: item.count + 1,
-          total: (+item.total + book.price).toFixed(2),
-        };
-      } else {
-        newItem = {
-          id: book.id,
-          title: book.title,
-          count: 1,
-          total: book.price,
-        };
-      }
+      const newItem = updateCartItem(book, item);
 
       return {
         ...state,
