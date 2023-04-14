@@ -90,17 +90,17 @@ const reducer = (state = initialState, action) => {
     case "FETCH_BOOKS_REQUEST":
     case "FETCH_BOOKS_SUCCESS":
     case "FETCH_BOOKS_FAILURE":
-      return: {
-        ... state,
-        bookList: updateBookList(state, action)
-      }
+      return {
+        ...state,
+        bookList: updateBookList(state, action),
+      };
     case "BOOK_ADDED_TO_CARD":
     case "BOOK_REMOVED_FROM_CARD":
     case "ALL_BOOKS_REMOVED_FROM_CARD":
-      return: {
-        ... state,
-        bookList: updateShoppingCart (state, action)
-      }
+      return {
+        ...state,
+        bookList: updateShoppingCart(state, action),
+      };
     default:
       return state;
   }
