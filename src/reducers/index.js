@@ -20,7 +20,6 @@ const updateCartItems = (cartItems, item, idx) => {
 
 const updateCartItem = (book, item = {}, quantity) => {
   const { id = book.id, count = 0, title = book.title, total = 0 } = item;
-
   return {
     id,
     title,
@@ -37,9 +36,7 @@ const updateOrder = (state, bookId, quantity) => {
   const book = books.find(({ id }) => id === bookId);
   const itemIndex = cartItems.findIndex(({ id }) => id === bookId);
   const item = cartItems[itemIndex];
-
   const newItem = updateCartItem(book, item, quantity);
-
   return {
     orderTotal: 0,
     cartItems: updateCartItems(cartItems, newItem, itemIndex),
